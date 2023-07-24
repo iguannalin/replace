@@ -1,0 +1,61 @@
+/* @import url(small.css) (min-width:0px);
+@import url(large.css) (min-width:900px); */
+
+:root {
+  --main-bg-color: rgb(35, 35, 35);
+  --main-text-color: rgb(255 255 255);
+  --alt-bg-color: rgb(223 223 223);
+}
+
+html {
+  display: block;
+  width: 100%;
+}
+
+body {
+  background-color: rgb(35, 35, 35);
+  color: #f9faffde;
+  text-shadow: #858ebc -2px 2px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  margin-top: 40vh;
+}
+
+#strokes {
+  padding-bottom: 16px;
+}
+
+#phrase {
+  -webkit-box-reflect: below 0 linear-gradient(transparent, #000000);
+}
+
+#poem {
+  word-break: break-all;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  font-size: 28px;
+  height: 330px;
+  overflow-y: clip;
+  overflow-x: clip;
+  width: 350px;
+  line-height: 36px;
+}
+
+a:active, a:hover, a:focus {
+  text-shadow: #858ebc -2px 2px 8px;
+  color: #f9faffde;
+}
+
+.grayed {
+  text-shadow: #656565 -2px 2px 8px;
+  color: #656565;
+}
