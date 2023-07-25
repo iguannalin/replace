@@ -1,8 +1,5 @@
 window.addEventListener("load", () => {
   let chars = [];
-  const phElem = document.getElementById("phrase");
-  const stElem = document.getElementById("strokes");
-  let difficulty = 1;
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -21,13 +18,10 @@ window.addEventListener("load", () => {
     if (!e.target.classList.contains("grayed")) return;
     e.target.classList.remove("grayed");
     let x = e.target.innerText;
-    console.log(x);
     let a = "";
     x.split("").forEach((letter) => {
       a += letter;
-      getChars(a, e).then(() => {
-        console.log(chars);
-      });
+      getChars(a, e);
     });
   }
 
@@ -56,18 +50,4 @@ window.addEventListener("load", () => {
       if (elem && chars.length > 0) elem.target.innerText = chars[getRandomInt(0, chars.length)] + " ";
     });
   }
-
-  function makePhrase() {
-    if (!chars || !chars[2]) return;
-    difficulty = difficulty >= 20 ? difficulty = 2 : difficulty + 1;
-    phElem.innerHTML = "";
-    stElem.innerHTML = difficulty;
-    for (let i = 0; i < 4; i++) {
-      let x = chars[difficulty][getRandomInt(0, chars[difficulty].length)];
-      phElem.innerHTML = phElem.innerText.includes(x) ? i-=1 : phElem.innerHTML + x;
-    }
-  }
-  
-  // makePhrase();
-  // document.body.addEventListener('click', makePhrase);
 });

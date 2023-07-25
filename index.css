@@ -30,14 +30,6 @@ body {
   margin-top: 40vh;
 }
 
-#strokes {
-  padding-bottom: 16px;
-}
-
-#phrase {
-  -webkit-box-reflect: below 0 linear-gradient(transparent, #000000);
-}
-
 #poem {
   word-break: break-all;
   white-space: pre-line;
