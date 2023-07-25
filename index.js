@@ -18,13 +18,14 @@ window.addEventListener("load", () => {
 
   function connectWord(e) {
     e.preventDefault();
+    if (!e.target.classList.contains("grayed")) return;
     e.target.classList.remove("grayed");
     let x = e.target.innerText;
     console.log(x);
     let a = "";
     x.split("").forEach((letter) => {
       a += letter;
-      getChars(a).then(() => {
+      getChars(a, e).then(() => {
         console.log(chars);
       });
     });
@@ -47,12 +48,13 @@ window.addEventListener("load", () => {
     })
   }
 
-  async function getChars(letters) {
+  async function getChars(letters, elem) {
     if (!letters) return;
     chars = [];
-    await fetch(`http://ccdb.hemiola.com/characters/cantonese/${letters}`).then((r) => r.json()).then((d) => {
+    await fetch(`http://ccdb.hemiola.com/characters/cantonese/${letters.toLowerCase()}`).then((r) => r.json()).then((d) => {
       d.forEach((c) => chars.push(c.string));
-    })
+      if (elem && chars.length > 0) elem.target.innerText = chars[getRandomInt(0, chars.length)] + " ";
+    });
   }
 
   function makePhrase() {
