@@ -53,7 +53,7 @@ window.addEventListener("load", () => {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      referrerPolicy: "unsafe-url",
+      referrerPolicy: "strict-origin",
     })
     .then((r) => r.json()).then((d) => {
       d.forEach((c) => chars.push(c.string));
