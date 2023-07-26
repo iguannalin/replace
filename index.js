@@ -20,6 +20,7 @@ window.addEventListener("load", () => {
     let x = e.target.innerText;
     let a = "";
     x.split("").forEach((letter) => {
+      if (letter == " ") return;
       a += letter;
       getChars(a, e);
     });
