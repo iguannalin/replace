@@ -13,19 +13,6 @@ window.addEventListener("load", () => {
     getLines(d);
   });
 
-  function connectWord(e) {
-    e.preventDefault();
-    if (!e.target.classList.contains("grayed")) return;
-    e.target.classList.remove("grayed");
-    let x = e.target.innerText;
-    let a = "";
-    x.split("").forEach((letter) => {
-      if (letter == " ") return;
-      a += letter;
-      getChars(a, e);
-    });
-  }
-
   function getLines(t) {
     let div = document.getElementById("poem");
     let wmax = 350;
@@ -41,6 +28,20 @@ window.addEventListener("load", () => {
         div.appendChild(span);
       }
     })
+  }
+
+  function connectWord(e) {
+    e.preventDefault();
+    if (!e.target.classList.contains("grayed")) return;
+    e.target.classList.remove("grayed");
+    let x = e.target.innerText;
+    let a = "";
+    x.split("").forEach((letter, index) => {
+      if (letter == " ") return;
+      a += letter;
+      if (index > 2 && chars.length < 1) a = a.substring(1, index); // if still no results found, change word around
+      getChars(a, e);
+    });
   }
 
   async function getChars(letters, elem) {
