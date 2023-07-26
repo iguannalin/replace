@@ -45,16 +45,7 @@ window.addEventListener("load", () => {
   async function getChars(letters, elem) {
     if (!letters) return;
     chars = [];
-    await fetch(`http://ccdb.hemiola.com/characters/cantonese/${letters.toLowerCase()}`, {
-      method: "GET",
-      mode: "cors",
-      // credentials: "omit",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      referrerPolicy: "strict-origin",
-    })
+    await fetch(`https://seasons986.pythonanywhere.com/?letter=${letters.toLowerCase()}`)
     .then((r) => r.json()).then((d) => {
       d.forEach((c) => chars.push(c.string));
       if (elem && chars.length > 0) elem.target.innerText = chars[getRandomInt(0, chars.length)] + " ";
