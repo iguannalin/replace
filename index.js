@@ -48,12 +48,12 @@ window.addEventListener("load", () => {
     await fetch(`http://ccdb.hemiola.com/characters/cantonese/${letters.toLowerCase()}`, {
       method: "GET",
       mode: "cors",
-      credentials: "omit",
+      // credentials: "omit",
       headers: {
         "Content-Type": "application/json",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-      referrerPolicy: "no-referrer",
+      referrerPolicy: "unsafe_url",
     })
     .then((r) => r.json()).then((d) => {
       d.forEach((c) => chars.push(c.string));
