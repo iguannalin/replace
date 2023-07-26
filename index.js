@@ -45,25 +45,17 @@ window.addEventListener("load", () => {
   async function getChars(letters, elem) {
     if (!letters) return;
     chars = [];
-    await fetch(`https://seasons986.pythonanywhere.com/?letter=${letters.toLowerCase()}`)
+    await fetch(`https://seasons986.pythonanywhere.com/?letter=${letters.toLowerCase()}`, {
+      mode: "cors", // no-cors, *cors, same-origin,
+      headers: {
+        "Content-Type": "application/json",
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    })
     .then((r) => r.json()).then((d) => {
       d.forEach((c) => chars.push(c.string));
       if (elem && chars.length > 0) elem.target.innerText = chars[getRandomInt(0, chars.length)] + " ";
     });
-
-    // const response = await fetch(url, {
-    //   method: "POST", // *GET, POST, PUT, DELETE, etc.
-    //   mode: "cors", // no-cors, *cors, same-origin
-    //   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    //   credentials: "same-origin", // include, *same-origin, omit
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     // 'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   redirect: "follow", // manual, *follow, error
-    //   referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    //   body: JSON.stringify(data), // body data type must match "Content-Type" header
-    // });
-    // return response.json(); // parses JSON response into native JavaScript objects
   }
 });
