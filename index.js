@@ -47,7 +47,7 @@ window.addEventListener("load", () => {
   async function getChars(letters, elem) {
     if (!letters) return;
     chars = [];
-    await fetch(`https://seasons986.pythonanywhere.com/?letter=${letters.toLowerCase()}`, {
+    await fetch(`https://annaylin-100-days-api.netlify.app/?letter=${letters.toLowerCase()}`, {
       mode: "cors", // no-cors, *cors, same-origin,
       headers: {
         "Content-Type": "application/json",
